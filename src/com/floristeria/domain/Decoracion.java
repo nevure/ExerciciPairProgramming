@@ -16,7 +16,7 @@ public class Decoracion {
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
 		//if (!material.equalsIgnoreCase("Pl�stico") && !material.equalsIgnoreCase("Madera")) {
-		tipoMaterial = tipoMaterial.existe(material);
+		tipoMaterial = TipoMaterial.existe(material);
 		if (tipoMaterial == null)
 			throw new MaterialErroneoException("El material solo puede ser madera o plastico");
 
@@ -27,10 +27,9 @@ public class Decoracion {
 			throw new IllegalArgumentException("Ha introducido un n�mero inferior a 0");
 
 		} else {
-
 			this.nombre = nombre;
 
-			this.material = material;
+			//this.material = material;
 
 			this.precio = precio;
 		}
@@ -38,7 +37,7 @@ public class Decoracion {
 
 	@Override
 	public String toString() {
-		return "\t Nombre: " + nombre + ", Material: " + material + ", Precio: " + precio;
+		return "\t Nombre: " + nombre + ", Material: " + tipoMaterial + ", Precio: " + precio;
 	}
 
 }
