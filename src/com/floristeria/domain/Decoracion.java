@@ -1,15 +1,13 @@
 package com.floristeria.domain;
 
 import com.floristeria.excepciones.*;
-import com.floristeria.domain.*;
 
 public class Decoracion {
 	
+	private TipoMaterial tipoMaterial;
+	
 	private String nombre;
 	
-	private Tipomaterial tipoMaterial;
-	
-
 	private String material;
 
 	private double precio;
@@ -18,10 +16,11 @@ public class Decoracion {
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
 		//if (!material.equalsIgnoreCase("Pl�stico") && !material.equalsIgnoreCase("Madera")) {
-		if ()
+		tipoMaterial = tipoMaterial.existe(material);
+		if (tipoMaterial == null)
 			throw new MaterialErroneoException("El material solo puede ser madera o plastico");
 
-		} else if (nombre.isEmpty()) {
+		else if (nombre.isEmpty()) {
 			throw new CampoVacioException("Ha dejado el campo nombre vacio");
 
 		} else if (precio < 0) {
