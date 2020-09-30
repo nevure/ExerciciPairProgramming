@@ -1,15 +1,228 @@
 package com.floristeria.view;
 
-import com.floristeria.application.FloristeriaController;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-public class MainApp {
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
+
+import com.floristeria.application.FloristeriaController;
+import com.floristeria.excepciones.CampoVacioException;
+import com.floristeria.excepciones.MaterialErroneoException;
+
+public class MainApp implements ActionListener {
 
 	private static FloristeriaController controlador = new FloristeriaController();
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		// Pregutarle al usuario los datos para cargar en el inventario
+		String preguntaCrearArbol;
+		String preguntaAnadirFlor;
+		String preguntaAnadirDecoracion;
+
+		boolean isFloristeriaCreada = false;
+		boolean isArbolCreado = false;
+		boolean isFlorCreada = false;
+		boolean isDecoracionCreada = false;
+
+		// ------------------------------------------------------- CREAR FLORISTERIA
+		while (isFloristeriaCreada == false) {
+
+			try {
+
+				controlador.crearFloristeria(JOptionPane.showInputDialog("Introduce el nombre del negocio"));
+
+			} catch (CampoVacioException e) {
+				JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir el nombre", "Alert",
+						JOptionPane.WARNING_MESSAGE);
+				continue;
+
+			} catch (NullPointerException ee) {
+				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
+				continue;
+			}
+
+			isFloristeriaCreada = true;
+
+		}
+
+		// ------------------------------------------------------- CREAR ARBOLES
+
+		while (isArbolCreado == false) {
+
+			try {
+				preguntaCrearArbol = JOptionPane.showInputDialog("¿Desea añadir un árbol? SI o NO");
+
+				switch (preguntaCrearArbol.toLowerCase()) {
+				case "si":
+
+					try {
+
+						controlador.crearArbol(JOptionPane.showInputDialog("Introduce el nombre del árbol"),
+								Double.parseDouble(JOptionPane
+										.showInputDialog("Introduce la altura (la medida de medición es en cm)")),
+								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
+
+					} catch (CampoVacioException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
+								JOptionPane.WARNING_MESSAGE);
+						continue;
+
+					} catch (IllegalArgumentException ex) {
+						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
+								"Alert", JOptionPane.WARNING_MESSAGE);
+						continue;
+					}
+
+					break;
+
+				case "no":
+					isArbolCreado = true;
+					break;
+
+				default:
+					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+				}
+
+			} catch (NullPointerException ee) {
+				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
+
+			}
+
+		}
+
+		// ------------------------------------------------------- CREAR FLORES
+
+		while (isFlorCreada == false) {
+
+			try {
+				preguntaAnadirFlor = JOptionPane.showInputDialog("¿Desea añadir una Flor? SI o NO");
+
+				switch (preguntaAnadirFlor.toLowerCase()) {
+
+				case "si":
+					try {
+						controlador.crearFlor(JOptionPane.showInputDialog("Introduce el nombre de la flor"),
+								JOptionPane.showInputDialog("Introduce el color"),
+								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
+
+					} catch (CampoVacioException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
+								JOptionPane.WARNING_MESSAGE);
+						continue;
+
+					} catch (IllegalArgumentException ex) {
+						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
+								"Alert", JOptionPane.WARNING_MESSAGE);
+						continue;
+					}
+
+					break;
+
+				case "no":
+					isFlorCreada = true;
+					break;
+
+				default:
+					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+
+				}
+
+			} catch (NullPointerException ee) {
+				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
+
+			}
+
+		}
+
+//			controlador.crearFlor("Margarita", "Blanco", 12.00);
+//			controlador.crearFlor("Hortensia", "Lila", 15.00);
+
+		// ------------------------------------------------------------ CREAR DECORACION
+
+		while (isDecoracionCreada == false) {
+
+			try {
+
+				preguntaAnadirDecoracion = JOptionPane.showInputDialog("¿Desea añadir una Decoración? SI o NO");
+
+				switch (preguntaAnadirDecoracion.toLowerCase()) {
+				case "si":
+
+					try {
+
+						controlador.crearDecoracion(JOptionPane.showInputDialog("Introduce el nombre de la decoración"),
+								JOptionPane.showInputDialog("Introduce el material. Plástico o madera"),
+								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
+
+					} catch (CampoVacioException e) {
+						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
+								JOptionPane.WARNING_MESSAGE);
+						continue;
+
+					} catch (IllegalArgumentException ex) {
+						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos.",
+								"Alert", JOptionPane.WARNING_MESSAGE);
+
+						continue;
+
+					} catch (MaterialErroneoException exe) {
+						JOptionPane.showMessageDialog(null, exe.getMessage() + ". Vuelva a introducir los datos",
+								"Alert", JOptionPane.WARNING_MESSAGE);
+						continue;
+					}
+
+					break;
+
+				case "no":
+					isDecoracionCreada = true;
+					break;
+
+				default:
+					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+							JOptionPane.WARNING_MESSAGE);
+					break;
+
+				}
+
+			} catch (NullPointerException ee) {
+				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
+						JOptionPane.WARNING_MESSAGE);
+
+			}
+
+		}
+
+//			controlador.crearDecoracion("Maceta", "Plástico", 8);
+//			controlador.crearDecoracion("Florero", "Madera", 18);
+
+		// -------------------------------------------- IMPRIMIR STOCK
+
+		
+		Marco marco = new Marco();
+
+		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+
+		marco.setVisible(true);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		String resultado = controlador.imprimirStock();
+
+		System.out.println(resultado);
+
+		System.out.println("\n Gracias y hasta la próxima!");
 
 	}
 
