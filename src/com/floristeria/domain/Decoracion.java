@@ -7,7 +7,8 @@ public class Decoracion {
 	
 	private String nombre;
 	
-	private TipoMaterial tipoMaterial;
+	private Tipomaterial tipoMaterial;
+	
 
 	private String material;
 
