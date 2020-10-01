@@ -56,10 +56,14 @@ public class FloristeriaController {
 		StringBuilder listado = new StringBuilder();
 		 //  list.forEach(b::append);
 
+		listado.append("\tArboles: " + "\n");
 		floristeria.getListaArboles().forEach(listado::append);
+		listado.append("\tFlores: " + "\n");
 		floristeria.getListaFlores().forEach(listado::append);
+		listado.append("\tDecoración: " + "\n");
 		floristeria.getListaDecoraciones().forEach(listado::append);
 
+		/*
 		for (int i = 0; i < floristeria.getListaArboles().size(); i++) {
 
 			resultado += "\t" + floristeria.getListaArboles().get(i).toString() + "\n";
@@ -79,7 +83,7 @@ public class FloristeriaController {
 			resultado += "\t" + floristeria.getListaDecoraciones().get(i).toString() + "\n";
 		}
 
-		//return resultado;
+		//return resultado;*/
 		return listado.toString();
 	}
 
