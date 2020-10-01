@@ -18,5 +18,15 @@ public enum TipoMaterial {
 	    }
 	    return null;
 	}
+	public static String [] listaTipos() {
+		String[] elementos = new String[2];
+		int i=0;
+		
+		for (TipoMaterial valor : TipoMaterial.values()){
+			elementos[i] = valor.toString();
+			i++;
+	    }
+	    return elementos;
+	}
 		
 }

@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.floristeria.application.FloristeriaController;
+import com.floristeria.domain.TipoMaterial;
 import com.floristeria.excepciones.CampoVacioException;
 import com.floristeria.excepciones.MaterialErroneoException;
 
@@ -48,170 +49,103 @@ public class MainApp implements ActionListener {
 
 		}
 
-		// ------------------------------------------------------- CREAR ARBOLES
+		int opcionMenuAPP=0;
+		//ControladorVistaMenu miControlador = new ControladorVistaMenu();
+		VistasMenu vistaMenu = new VistasMenu();
 
-		while (isArbolCreado == false) {
+		//Mientras no escogamos la opciÃ³n de salir.
 
-			try {
-				preguntaCrearArbol = JOptionPane.showInputDialog("¿Desea añadir un árbol? SI o NO");
+		while ((opcionMenuAPP = vistaMenu.menuOpciones(new String[] {"Nuevo Ãrbol", "Nueva Flor", "Nueva DecoraciÃ³n", "Listar Stock", "Salir"}))!= 4) {
+			switch (opcionMenuAPP) {
+			case 0:
+				
+				try {		
+					controlador.crearArbol(vistaMenu.preguntaSimple("Nombre del Ã¡rbol"),
+							Double.parseDouble(vistaMenu.preguntaSimple("Altura en Cm:")),
+							Double.parseDouble(vistaMenu.preguntaSimple("Precio del Ãrbol")));
 
-				switch (preguntaCrearArbol.toLowerCase()) {
-				case "si":
-
-					try {
-
-						controlador.crearArbol(JOptionPane.showInputDialog("Introduce el nombre del árbol"),
-								Double.parseDouble(JOptionPane
-										.showInputDialog("Introduce la altura (la medida de medición es en cm)")),
-								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
-
-					} catch (CampoVacioException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
-								JOptionPane.WARNING_MESSAGE);
-						continue;
-
-					} catch (IllegalArgumentException ex) {
-						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
-								"Alert", JOptionPane.WARNING_MESSAGE);
-						continue;
-					}
-
-					break;
-
-				case "no":
-					isArbolCreado = true;
-					break;
-
-				default:
-					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+				} catch (CampoVacioException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
 							JOptionPane.WARNING_MESSAGE);
-					break;
+					continue;
+
+				} catch (IllegalArgumentException ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
+							"Alert", JOptionPane.WARNING_MESSAGE);
+					continue;
 				}
 
-			} catch (NullPointerException ee) {
-				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
-						JOptionPane.WARNING_MESSAGE);
+				break;		
+						
+			case 1:
+				
+				try {
+					controlador.crearFlor(vistaMenu.preguntaSimple("Nombre de la flor"),
+							vistaMenu.preguntaSimple("Introduce el color"),
+							Double.parseDouble(vistaMenu.preguntaSimple("Introduce el precio")));
 
-			}
-
-		}
-
-		// ------------------------------------------------------- CREAR FLORES
-
-		while (isFlorCreada == false) {
-
-			try {
-				preguntaAnadirFlor = JOptionPane.showInputDialog("¿Desea añadir una Flor? SI o NO");
-
-				switch (preguntaAnadirFlor.toLowerCase()) {
-
-				case "si":
-					try {
-						controlador.crearFlor(JOptionPane.showInputDialog("Introduce el nombre de la flor"),
-								JOptionPane.showInputDialog("Introduce el color"),
-								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
-
-					} catch (CampoVacioException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
-								JOptionPane.WARNING_MESSAGE);
-						continue;
-
-					} catch (IllegalArgumentException ex) {
-						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
-								"Alert", JOptionPane.WARNING_MESSAGE);
-						continue;
-					}
-
-					break;
-
-				case "no":
-					isFlorCreada = true;
-					break;
-
-				default:
-					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+				} catch (CampoVacioException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
 							JOptionPane.WARNING_MESSAGE);
-					break;
+					continue;
 
+				} catch (IllegalArgumentException ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos",
+							"Alert", JOptionPane.WARNING_MESSAGE);
+					continue;
 				}
 
-			} catch (NullPointerException ee) {
-				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
-						JOptionPane.WARNING_MESSAGE);
+				
+				
+				break;
+			case 2:
+				
+				
+				try {
 
-			}
+					controlador.crearDecoracion(vistaMenu.preguntaSimple("Nombre de la decoraciÃ³n"),
+							vistaMenu.preguntaOpciones(TipoMaterial.listaTipos(), "Tipo de Material"),
+							Double.parseDouble(vistaMenu.preguntaSimple("Introduce el precio")));
 
-		}
-
-//			controlador.crearFlor("Margarita", "Blanco", 12.00);
-//			controlador.crearFlor("Hortensia", "Lila", 15.00);
-
-		// ------------------------------------------------------------ CREAR DECORACION
-
-		while (isDecoracionCreada == false) {
-
-			try {
-
-				preguntaAnadirDecoracion = JOptionPane.showInputDialog("¿Desea añadir una Decoración? SI o NO");
-
-				switch (preguntaAnadirDecoracion.toLowerCase()) {
-				case "si":
-
-					try {
-
-						controlador.crearDecoracion(JOptionPane.showInputDialog("Introduce el nombre de la decoración"),
-								JOptionPane.showInputDialog("Introduce el material. Plástico o madera"),
-								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
-
-					} catch (CampoVacioException e) {
-						JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
-								JOptionPane.WARNING_MESSAGE);
-						continue;
-
-					} catch (IllegalArgumentException ex) {
-						JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos.",
-								"Alert", JOptionPane.WARNING_MESSAGE);
-
-						continue;
-
-					} catch (MaterialErroneoException exe) {
-						JOptionPane.showMessageDialog(null, exe.getMessage() + ". Vuelva a introducir los datos",
-								"Alert", JOptionPane.WARNING_MESSAGE);
-						continue;
-					}
-
-					break;
-
-				case "no":
-					isDecoracionCreada = true;
-					break;
-
-				default:
-					JOptionPane.showMessageDialog(null, "Ha introducido mal la palabra", "Alert",
+				} catch (CampoVacioException e) {
+					JOptionPane.showMessageDialog(null, e.getMessage() + ". Vuelva a introducir los datos", "Alert",
 							JOptionPane.WARNING_MESSAGE);
-					break;
+					continue;
 
+				} catch (IllegalArgumentException ex) {
+					JOptionPane.showMessageDialog(null, ex.getMessage() + ". Vuelva a introducir los datos.",
+							"Alert", JOptionPane.WARNING_MESSAGE);
+
+					continue;
+
+				} catch (MaterialErroneoException exe) {
+					JOptionPane.showMessageDialog(null, exe.getMessage() + ". Vuelva a introducir los datos",
+							"Alert", JOptionPane.WARNING_MESSAGE);
+					continue;
 				}
 
-			} catch (NullPointerException ee) {
-				JOptionPane.showMessageDialog(null, "Ha cerrado las ventanas. \nVuelva a cargar los datos.", "Alert",
-						JOptionPane.WARNING_MESSAGE);
+				
+				break;
+			case 3:
+				
+				vistaMenu.mostrarListado(controlador.imprimirStock());
 
+			default:
+				break;
 			}
-
+		
+			
 		}
-
-//			controlador.crearDecoracion("Maceta", "Plástico", 8);
-//			controlador.crearDecoracion("Florero", "Madera", 18);
-
+		
+		
 		// -------------------------------------------- IMPRIMIR STOCK
 
-		
+		/*
 		Marco marco = new Marco();
 
 		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		marco.setVisible(true);
+		marco.setVisible(true);*/
 
 	}
 
@@ -222,7 +156,7 @@ public class MainApp implements ActionListener {
 
 		System.out.println(resultado);
 
-		System.out.println("\n Gracias y hasta la próxima!");
+		System.out.println("\n Gracias y hasta la prï¿½xima!");
 
 	}
 
