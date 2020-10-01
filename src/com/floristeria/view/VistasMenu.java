@@ -54,5 +54,31 @@ public class VistasMenu {
 		return respuestas;
 	}
 	
+	public String preguntaSimple(String pregunta) {
+		
+		String respuesta = null;
+		
+		while (respuesta == null ) {
+				respuesta = JOptionPane.showInputDialog(
+						   null,
+						   pregunta + "(Campo obligatorio",
+						   "")	;			
+			}
+	
+		return respuesta;
+	}
+	
+	public String preguntaOpciones(String [] opciones, String mensaje) {
+		return (String) JOptionPane.showInputDialog(null,mensaje, "Elegir",JOptionPane.QUESTION_MESSAGE,null,opciones, opciones[0]);
+
+	}
+	
+	public void mostrarListado( String listado) {	
+		JOptionPane.showMessageDialog(
+				   null,
+				   listado);
+	}
+	
+	
 
 }
