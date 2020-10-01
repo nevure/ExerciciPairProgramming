@@ -52,7 +52,6 @@ public class FloristeriaController {
 	// Imprimir stock del negocio
 	public String imprimirStock() {
 
-		String resultado = "\tArboles: " + "\n";
 		StringBuilder listado = new StringBuilder();
 		 //  list.forEach(b::append);
 
@@ -63,27 +62,7 @@ public class FloristeriaController {
 		listado.append("\nDecoración: \n");
 		floristeria.getListaDecoraciones().forEach(listado::append);
 
-		/*
-		for (int i = 0; i < floristeria.getListaArboles().size(); i++) {
-
-			resultado += "\t" + floristeria.getListaArboles().get(i).toString() + "\n";
-		}
-
-		resultado += "\tFlores: " + "\n";
-
-		for (int i = 0; i < floristeria.getListaFlores().size(); i++) {
-
-			resultado += "\t" + floristeria.getListaFlores().get(i).toString() + "\n";
-		}
-
-		resultado += "\tDecoraci�n: " + "\n";
-
-		for (int i = 0; i < floristeria.getListaDecoraciones().size(); i++) {
-
-			resultado += "\t" + floristeria.getListaDecoraciones().get(i).toString() + "\n";
-		}
-
-		//return resultado;*/
+		
 		return listado.toString();
 	}
 
