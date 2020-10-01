@@ -50,7 +50,7 @@ public class MainApp implements ActionListener {
 
 		int opcionMenuAPP=0, opcionMenuUsuario=0;
 		//ControladorVistaMenu miControlador = new ControladorVistaMenu();
-		VistasMenu vistaMenu = new VistaMenu;
+		VistasMenu vistaMenu = new VistasMenu;
 
 		//Mientras no escogamos la opción de salir.
 
