@@ -58,9 +58,9 @@ public class FloristeriaController {
 
 		listado.append("\tArboles: \n");
 		floristeria.getListaArboles().forEach(listado::append);
-		listado.append("\tFlores: \n");
+		listado.append("\nFlores: \n");
 		floristeria.getListaFlores().forEach(listado::append);
-		listado.append("\tDecoración: \n");
+		listado.append("\nDecoración: \n");
 		floristeria.getListaDecoraciones().forEach(listado::append);
 
 		/*
