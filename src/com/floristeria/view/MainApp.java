@@ -48,21 +48,45 @@ public class MainApp implements ActionListener {
 
 		}
 
+		int opcionMenuAPP=0, opcionMenuUsuario=0;
+		//ControladorVistaMenu miControlador = new ControladorVistaMenu();
+		VistasMenu vistaMenu = new VistaMenu;
+
+		//Mientras no escogamos la opci√≥n de salir.
+
+		while ((opcionMenuAPP = vistaMenu.menuOpciones(new String[] {"Nuevo √Årbol", "Nueva Flor", "Nueva Decoraci√≥n", "Listar Stock", "Salir"}))!= 4) {
+			switch (opcionMenuAPP) {
+			case 0:
+				
+				break;
+			case 1:
+				break;
+
+			default:
+				break;
+			}
+		
+			
+		}
+		
+		
+		
+		
 		// ------------------------------------------------------- CREAR ARBOLES
 
 		while (isArbolCreado == false) {
 
 			try {
-				preguntaCrearArbol = JOptionPane.showInputDialog("øDesea aÒadir un ·rbol? SI o NO");
+				preguntaCrearArbol = JOptionPane.showInputDialog("ÔøΩDesea aÔøΩadir un ÔøΩrbol? SI o NO");
 
 				switch (preguntaCrearArbol.toLowerCase()) {
 				case "si":
 
 					try {
 
-						controlador.crearArbol(JOptionPane.showInputDialog("Introduce el nombre del ·rbol"),
+						controlador.crearArbol(JOptionPane.showInputDialog("Introduce el nombre del ÔøΩrbol"),
 								Double.parseDouble(JOptionPane
-										.showInputDialog("Introduce la altura (la medida de mediciÛn es en cm)")),
+										.showInputDialog("Introduce la altura (la medida de mediciÔøΩn es en cm)")),
 								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
 
 					} catch (CampoVacioException e) {
@@ -101,7 +125,7 @@ public class MainApp implements ActionListener {
 		while (isFlorCreada == false) {
 
 			try {
-				preguntaAnadirFlor = JOptionPane.showInputDialog("øDesea aÒadir una Flor? SI o NO");
+				preguntaAnadirFlor = JOptionPane.showInputDialog("ÔøΩDesea aÔøΩadir una Flor? SI o NO");
 
 				switch (preguntaAnadirFlor.toLowerCase()) {
 
@@ -152,15 +176,15 @@ public class MainApp implements ActionListener {
 
 			try {
 
-				preguntaAnadirDecoracion = JOptionPane.showInputDialog("øDesea aÒadir una DecoraciÛn? SI o NO");
+				preguntaAnadirDecoracion = JOptionPane.showInputDialog("ÔøΩDesea aÔøΩadir una DecoraciÔøΩn? SI o NO");
 
 				switch (preguntaAnadirDecoracion.toLowerCase()) {
 				case "si":
 
 					try {
 
-						controlador.crearDecoracion(JOptionPane.showInputDialog("Introduce el nombre de la decoraciÛn"),
-								JOptionPane.showInputDialog("Introduce el material. Pl·stico o madera"),
+						controlador.crearDecoracion(JOptionPane.showInputDialog("Introduce el nombre de la decoraciÔøΩn"),
+								JOptionPane.showInputDialog("Introduce el material. PlÔøΩstico o madera"),
 								Double.parseDouble(JOptionPane.showInputDialog("Introduce el precio")));
 
 					} catch (CampoVacioException e) {
@@ -201,7 +225,7 @@ public class MainApp implements ActionListener {
 
 		}
 
-//			controlador.crearDecoracion("Maceta", "Pl·stico", 8);
+//			controlador.crearDecoracion("Maceta", "PlÔøΩstico", 8);
 //			controlador.crearDecoracion("Florero", "Madera", 18);
 
 		// -------------------------------------------- IMPRIMIR STOCK
@@ -222,7 +246,7 @@ public class MainApp implements ActionListener {
 
 		System.out.println(resultado);
 
-		System.out.println("\n Gracias y hasta la prÛxima!");
+		System.out.println("\n Gracias y hasta la prÔøΩxima!");
 
 	}
 

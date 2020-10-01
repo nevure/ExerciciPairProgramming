@@ -8,7 +8,6 @@ public class Decoracion {
 	
 	private String nombre;
 	
-	private String material;
 
 	private double precio;
 
