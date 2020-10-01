@@ -23,7 +23,7 @@ public class FloristeriaController {
 
 	}
 
-	// Crear árbol
+	// Crear ï¿½rbol
 	public void crearArbol(String nombre, double altura, double precio)
 			throws CampoVacioException, IllegalArgumentException {
 
@@ -40,7 +40,7 @@ public class FloristeriaController {
 		floristeria.anadirFlor(flor);
 	}
 
-	// Crear decoración
+	// Crear decoraciï¿½n
 	public void crearDecoracion(String nombre, String material, double precio)
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
@@ -53,6 +53,12 @@ public class FloristeriaController {
 	public String imprimirStock() {
 
 		String resultado = "\tArboles: " + "\n";
+		StringBuilder listado = new StringBuilder();
+		 //  list.forEach(b::append);
+
+		floristeria.getListaArboles().forEach(listado::append);
+		floristeria.getListaFlores().forEach(listado::append);
+		floristeria.getListaDecoraciones().forEach(listado::append);
 
 		for (int i = 0; i < floristeria.getListaArboles().size(); i++) {
 
@@ -66,14 +72,15 @@ public class FloristeriaController {
 			resultado += "\t" + floristeria.getListaFlores().get(i).toString() + "\n";
 		}
 
-		resultado += "\tDecoración: " + "\n";
+		resultado += "\tDecoraciï¿½n: " + "\n";
 
 		for (int i = 0; i < floristeria.getListaDecoraciones().size(); i++) {
 
 			resultado += "\t" + floristeria.getListaDecoraciones().get(i).toString() + "\n";
 		}
 
-		return resultado;
+		//return resultado;
+		return listado.toString();
 	}
 
 }
