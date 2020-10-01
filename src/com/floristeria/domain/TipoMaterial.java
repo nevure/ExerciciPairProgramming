@@ -24,6 +24,7 @@ public enum TipoMaterial {
 		
 		for (TipoMaterial valor : TipoMaterial.values()){
 			elementos[i] = valor.toString();
+			i++;
 	    }
 	    return elementos;
 	}
