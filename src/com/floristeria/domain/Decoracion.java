@@ -14,7 +14,6 @@ public class Decoracion {
 	public Decoracion(String nombre, String material, double precio)
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
-		//if (!material.equalsIgnoreCase("Pl�stico") && !material.equalsIgnoreCase("Madera")) {
 		tipoMaterial = TipoMaterial.existe(material);
 		if (tipoMaterial == null)
 			throw new MaterialErroneoException("El material solo puede ser madera o plastico");
