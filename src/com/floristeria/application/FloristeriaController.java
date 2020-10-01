@@ -56,11 +56,11 @@ public class FloristeriaController {
 		StringBuilder listado = new StringBuilder();
 		 //  list.forEach(b::append);
 
-		listado.append("\tArboles: " + "\n");
+		listado.append("\tArboles: \n");
 		floristeria.getListaArboles().forEach(listado::append);
-		listado.append("\tFlores: " + "\n");
+		listado.append("\tFlores: \n");
 		floristeria.getListaFlores().forEach(listado::append);
-		listado.append("\tDecoración: " + "\n");
+		listado.append("\tDecoración: \n");
 		floristeria.getListaDecoraciones().forEach(listado::append);
 
 		/*
