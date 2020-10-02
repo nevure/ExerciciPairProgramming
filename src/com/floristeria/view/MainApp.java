@@ -3,14 +3,22 @@ package com.floristeria.view;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import com.floristeria.application.FloristeriaController;
 import com.floristeria.domain.TipoMaterial;
 import com.floristeria.excepciones.CampoVacioException;
 import com.floristeria.excepciones.MaterialErroneoException;
-
+/**
+ * Clase principal MAIN
+ * 
+ * Dos bloques. El primero para crear la floristería
+ * el segundo bloque con el menú principal hasta salir de la app
+ * 
+ * @author Victoria Parra
+ * @authon Rubén Rodríguez
+ *
+ */
 public class MainApp implements ActionListener {
 
 	private static FloristeriaController controlador = new FloristeriaController();
@@ -18,16 +26,15 @@ public class MainApp implements ActionListener {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
-		String preguntaCrearArbol;
-		String preguntaAnadirFlor;
-		String preguntaAnadirDecoracion;
-
 		boolean isFloristeriaCreada = false;
-		boolean isArbolCreado = false;
-		boolean isFlorCreada = false;
-		boolean isDecoracionCreada = false;
+		int opcionMenuAPP=0;
+		VistasMenu vistaMenu = new VistasMenu();
 
-		// ------------------------------------------------------- CREAR FLORISTERIA
+
+		/**
+		 * Es obligado crear una floristería y darle un nombre.
+		 * Manejamos con un try catch que introduzca un nombre y que no quiera salir.
+		 */
 		while (isFloristeriaCreada == false) {
 
 			try {
@@ -49,12 +56,15 @@ public class MainApp implements ActionListener {
 
 		}
 
-		int opcionMenuAPP=0;
-		//ControladorVistaMenu miControlador = new ControladorVistaMenu();
-		VistasMenu vistaMenu = new VistasMenu();
 
-		//Mientras no escogamos la opción de salir.
-
+		/**
+		 * Segundo bloque. Se ejecuta mientras no escoga el usuario la opción salir.
+		 * 
+		 *  se divide en tres opciones
+		 *  Para cada opción llamamos a un método del controlador. a dicha método le pasamos un objeto de vistaMenu que lo que hace es preguntar al usuario.
+		 *  Lo encerramos en un try catch para manejar cualquier dato de entrada erróneo.
+		 *  
+		 */
 		while ((opcionMenuAPP = vistaMenu.menuOpciones(new String[] {"Nuevo Árbol", "Nueva Flor", "Nueva Decoración", "Listar Stock", "Salir"}))!= 4) {
 			switch (opcionMenuAPP) {
 			case 0:
@@ -137,15 +147,7 @@ public class MainApp implements ActionListener {
 			
 		}
 		
-		
-		// -------------------------------------------- IMPRIMIR STOCK
-
-		/*
-		Marco marco = new Marco();
-
-		marco.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
-		marco.setVisible(true);*/
+	
 
 	}
 

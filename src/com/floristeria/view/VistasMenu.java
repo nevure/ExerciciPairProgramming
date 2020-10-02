@@ -6,7 +6,14 @@ package com.floristeria.view;
 import javax.swing.JOptionPane;
 
 /**
- * @author rub
+ * 
+ * Clase para manejar los elementos visuales de swing. 
+ * Los método reciben una cadena (la pregunta= y devuelve la respuesta. 
+ * Aquí no se controla las respuestas.
+ * 
+ * 
+ * @author Victoria Parra
+ * @author Rubén Rodríguez
  *
  */
 public class VistasMenu {
@@ -34,26 +41,14 @@ public class VistasMenu {
 		
 	}
 	
-	
-	public String[] menuConPreguntas(String[] preguntas) {
-		
-		String respuestas[] = new String[preguntas.length];
-		int i = 0;
-		
-		for (String pregunta: preguntas) {
-		
-			while (respuestas[i] == null || respuestas[i].length() < 3) {
-				respuestas[i] = JOptionPane.showInputDialog(
-						   null,
-						   pregunta + " (Campo obligatorio)",
-						   "")	;			
-			}
-					
-			i++;		
-		}
-		return respuestas;
-	}
-	
+
+	/**
+	 * 
+	 * Método que recibe una cadena, la pregunta; y devuelve otra cadena, la respuesta.
+	 * 
+	 * @param pregunta
+	 * @return cadena que es la respuesta.
+	 */
 	public String preguntaSimple(String pregunta) {
 		
 		String respuesta = null;
@@ -68,11 +63,23 @@ public class VistasMenu {
 		return respuesta;
 	}
 	
+	/**
+	 * Método que muestra un desplegable con opciones.
+	 * 
+	 * @param opciones del desplegable
+	 * @param mensaje informativo sobre el desplegable
+	 * @return cadena con la opción elegida.
+	 */
+	
 	public String preguntaOpciones(String [] opciones, String mensaje) {
 		return (String) JOptionPane.showInputDialog(null,mensaje, "Elegir",JOptionPane.QUESTION_MESSAGE,null,opciones, opciones[0]);
 
 	}
 	
+	/**
+	 * Método que recibe un String y lo muestra en un panel.
+	 * @param listado
+	 */
 	public void mostrarListado( String listado) {	
 		JOptionPane.showMessageDialog(
 				   null,
