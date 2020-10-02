@@ -1,8 +1,5 @@
 package com.floristeria.view;
 
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
 import javax.swing.JOptionPane;
 
 import com.floristeria.application.FloristeriaController;
@@ -19,7 +16,7 @@ import com.floristeria.excepciones.MaterialErroneoException;
  * @authon Rubén Rodríguez
  *
  */
-public class MainApp implements ActionListener {
+public class MainApp  {
 
 	private static FloristeriaController controlador = new FloristeriaController();
 
