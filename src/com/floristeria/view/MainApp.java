@@ -151,15 +151,4 @@ public class MainApp implements ActionListener {
 
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		String resultado = controlador.imprimirStock();
-
-		System.out.println(resultado);
-
-		System.out.println("\n Gracias y hasta la pr�xima!");
-
-	}
-
 }
