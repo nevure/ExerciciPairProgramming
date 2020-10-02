@@ -21,7 +21,9 @@ public class Arboles implements Plantas {
 
 		if (altura < 0 || precio < 0) {
 
-			throw new IllegalArgumentException("Has introducido un número inferior a 0");
+
+			throw new IllegalArgumentException("Has introducido un nÃºmero inferior a 0");
+
 		}
 
 		this.altura = altura;
@@ -32,7 +34,7 @@ public class Arboles implements Plantas {
 	@Override
 	public String getDescripcion() {
 		// TODO Auto-generated method stub
-		return "Esto es un árbol";
+		return "Esto es un Ã¡rbol";
 	}
 
 	@Override
