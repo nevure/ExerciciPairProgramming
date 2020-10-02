@@ -56,11 +56,11 @@ public class FloristeriaController {
 		 //  list.forEach(b::append);
 
 		listado.append("\tArboles: \n");
-		floristeria.getListaArboles().forEach(listado::append);
+		floristeria.getListaArboles().forEach((arbol) -> listado.append("\n"+arbol) );
 		listado.append("\nFlores: \n");
-		floristeria.getListaFlores().forEach(listado::append);
+		floristeria.getListaFlores().forEach((flor) -> listado.append("\n"+flor) );
 		listado.append("\nDecoración: \n");
-		floristeria.getListaDecoraciones().forEach(listado::append);
+		floristeria.getListaDecoraciones().forEach((deco) -> listado.append("\n"+deco) );
 
 		
 		return listado.toString();
