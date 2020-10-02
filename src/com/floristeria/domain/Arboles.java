@@ -1,6 +1,6 @@
 package com.floristeria.domain;
 
-import com.floristeria.excepciones.CampoVacioException;
+import com.floristeria.excepciones.*;
 
 public class Arboles implements Plantas {
 

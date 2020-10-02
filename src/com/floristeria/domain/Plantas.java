@@ -1,14 +1,15 @@
 package com.floristeria.domain;
 
+/**
+ * Interfaz Plantas.
+ * √ÅRboles y flores no dejan de ser plantas,
+ * Creamos la interfaz. 
+ * @author admin
+ *
+ */
 public interface Plantas {
 
-	//Esto lo sacaria ya que no estan en uso
-//	public String nombre = "";
-//
-//	public double precio = 0;
 
-	
-	//Posible mÈtodo de la interface
 	public String getDescripcion();
 
 }

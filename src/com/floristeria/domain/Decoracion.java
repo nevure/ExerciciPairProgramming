@@ -50,6 +50,5 @@ public class Decoracion {
 	public String toString() {
 		return "\t Nombre: " + nombre + ", Material: " + tipoMaterial + ", Precio: " + precio;
 	}
->>>>>>> Rama-1
 
 }
