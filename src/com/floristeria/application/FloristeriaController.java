@@ -7,11 +7,26 @@ import com.floristeria.excepciones.CampoVacioException;
 import com.floristeria.excepciones.MaterialErroneoException;
 import com.floristeria.persistence.Floristeria;
 
+/**
+ * Clase Controladora.
+ * Esta clase crea una floristería y dispone de los métodos necesarios para aumentar el stock de la floristería.
+ * 
+ * @author Victoria Parra
+ * @author Rubén Rodríguez
+ *
+ */
+
 public class FloristeriaController {
 
-	private Floristeria floristeria = new Floristeria();
+	private Floristeria floristeria;
 
-	// Crear floristeria - nombre
+	/**
+	 * 
+	 * Crear una floristería asignándole un nombre a la misma.
+	 * 
+	 * @param nombre
+	 * @throws CampoVacioException
+	 */
 	public void crearFloristeria(String nombre) throws CampoVacioException {
 
 		if (nombre.isEmpty()) {
@@ -23,7 +38,15 @@ public class FloristeriaController {
 
 	}
 
-	// Crear �rbol
+	/**
+	 * Creamos un árbol que agregamos a la floristería
+	 * 
+	 * @param nombre
+	 * @param altura
+	 * @param precio
+	 * @throws CampoVacioException
+	 * @throws IllegalArgumentException
+	 */
 	public void crearArbol(String nombre, double altura, double precio)
 			throws CampoVacioException, IllegalArgumentException {
 
@@ -32,7 +55,16 @@ public class FloristeriaController {
 
 	}
 
-	// Crear flor
+
+	/**
+	 * Creamos una flor que agregamos a la floristería
+	 * 
+	 * @param nombre
+	 * @param color
+	 * @param precio
+	 * @throws CampoVacioException
+	 * @throws IllegalArgumentException
+	 */
 	public void crearFlor(String nombre, String color, double precio)
 			throws CampoVacioException, IllegalArgumentException {
 
@@ -40,7 +72,16 @@ public class FloristeriaController {
 		floristeria.anadirFlor(flor);
 	}
 
-	// Crear decoraci�n
+
+	/**
+	 * Creamos un elemento de decoración que agregamos a la floristería
+	 * @param nombre
+	 * @param material
+	 * @param precio
+	 * @throws CampoVacioException
+	 * @throws MaterialErroneoException
+	 * @throws IllegalArgumentException
+	 */
 	public void crearDecoracion(String nombre, String material, double precio)
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
@@ -49,7 +90,11 @@ public class FloristeriaController {
 
 	}
 
-	// Imprimir stock del negocio
+	/**
+	 * Método que crea una cadena formateada con el stock de la floristería
+	 * 
+	 * @return Cadena con el stock 
+	 */
 	public String imprimirStock() {
 
 		StringBuilder listado = new StringBuilder();
