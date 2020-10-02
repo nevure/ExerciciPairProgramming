@@ -45,7 +45,7 @@ public class VistasMenu {
 			while (respuestas[i] == null || respuestas[i].length() < 3) {
 				respuestas[i] = JOptionPane.showInputDialog(
 						   null,
-						   pregunta + "(Campo obligatorio",
+						   pregunta + " (Campo obligatorio)",
 						   "")	;			
 			}
 					
@@ -61,7 +61,7 @@ public class VistasMenu {
 		while (respuesta == null ) {
 				respuesta = JOptionPane.showInputDialog(
 						   null,
-						   pregunta + "(Campo obligatorio",
+						   pregunta + " (Campo obligatorio)",
 						   "")	;			
 			}
 	

@@ -18,11 +18,22 @@ public class Floristeria {
 
 	private List<Decoracion> listaDecoraciones = new ArrayList<Decoracion>();
 
+	// Constructor sin parámetros
 	public Floristeria() {
 
 	}
 
+	/**
+	 * Constructor
+	 * 
+	 * @param nombre nombre de la floristeria
+	 */
+
 	public Floristeria(String nombre) throws CampoVacioException {
+
+		/**
+		 * @throws Lanzar excepción si el campo nombre está vacío
+		 */
 
 		if (nombre.isEmpty()) {
 			throw new CampoVacioException("Ha dejado el campo nombre vacio");
@@ -30,13 +41,11 @@ public class Floristeria {
 
 		this.nombre = nombre;
 
-		System.out.println(nombre);
-
 	}
 
-	//Métodos para añadir elementos a las listas
+	// Métodos para añadir elementos a las listas
 	public void anadirArbol(Arboles arbol) {
-		listaArboles.add(arbol); //Se añade a la listaArboles
+		listaArboles.add(arbol); // Se añade a la listaArboles
 	}
 
 	public void anadirFlor(Flores flor) {
@@ -47,15 +56,23 @@ public class Floristeria {
 		listaDecoraciones.add(deco);
 	}
 
-	// Getters 
+	/**
+	 * @return devuelve lista de arboles
+	 */
 	public List<Arboles> getListaArboles() {
 		return listaArboles;
 	}
 
+	/**
+	 * @return devuelve lista de flores
+	 */
 	public List<Flores> getListaFlores() {
 		return listaFlores;
 	}
 
+	/**
+	 * @return devuelve lista de decoraciones
+	 */
 	public List<Decoracion> getListaDecoraciones() {
 		return listaDecoraciones;
 	}

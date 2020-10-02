@@ -3,22 +3,36 @@ package com.floristeria.domain;
 import com.floristeria.excepciones.*;
 
 public class Decoracion {
-	
+
 	private TipoMaterial tipoMaterial;
-	
+
 	private String nombre;
-	
 
 	private double precio;
+
+	/**
+	 * Constructor
+	 * 
+	 * @param nombre       nombre de la decoración
+	 * 
+	 * @param TipoMaterial tipo de material de la decoración
+	 * 
+	 * @param precio       precio de la decoración
+	 */
 
 	public Decoracion(String nombre, String material, double precio)
 			throws CampoVacioException, MaterialErroneoException, IllegalArgumentException {
 
 		tipoMaterial = TipoMaterial.existe(material);
-		if (tipoMaterial == null)
-			throw new MaterialErroneoException("El material solo puede ser madera o plastico");
 
-		else if (nombre.isEmpty()) {
+		/**
+		 * @throws Lanzar excepción si el TipoMaterial es nulo, si el campo nombre está
+		 *                vacío, o si el precio tiene un numero en negativo.
+		 */
+		if (tipoMaterial == null) {
+			throw new MaterialErroneoException("El material solo puede ser madera o plástico");
+
+		} else if (nombre.isEmpty()) {
 			throw new CampoVacioException("Ha dejado el campo nombre vacio");
 
 		} else if (precio < 0) {
@@ -26,8 +40,6 @@ public class Decoracion {
 
 		} else {
 			this.nombre = nombre;
-
-			//this.material = material;
 
 			this.precio = precio;
 		}

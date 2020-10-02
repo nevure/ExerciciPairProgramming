@@ -10,23 +10,37 @@ public class Flores implements Plantas {
 
 	private double precio;
 
+	/**
+	 * Constructor
+	 * 
+	 * @param nombre nombre de la flor
+	 * 
+	 * @param color  color de la flor
+	 * 
+	 * @param precio precio de la flor
+	 */
+
 	public Flores(String nombre, String color, double precio) throws CampoVacioException, IllegalArgumentException {
+
+		/**
+		 * @throws Lanzar excepción si los campos están vacíos o el precio es un número
+		 *                negativo.
+		 */
 
 		if (nombre.isEmpty() || color.isEmpty()) {
 
 			throw new CampoVacioException("Ha dejado el campo nombre o color vacios");
-		}
 
-		this.nombre = nombre;
-
-		this.color = color;
-
-		if (precio < 0) {
+		} else if (precio < 0) {
 
 			throw new IllegalArgumentException("Ha introducido un número inferior a 0");
-		}
 
-		this.precio = precio;
+		} else {
+
+			this.nombre = nombre;
+			this.color = color;
+			this.precio = precio;
+		}
 
 	}
 
