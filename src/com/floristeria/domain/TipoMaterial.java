@@ -3,11 +3,8 @@
  */
 package com.floristeria.domain;
 
-<<<<<<< HEAD
-import java.util.PrimitiveIterator.OfDouble;
 
 /**
- * @author ru
 =======
 /**
  * 
@@ -24,16 +21,6 @@ public enum TipoMaterial {
 	PLASTICO,
 	MADERA;
 	
-<<<<<<< HEAD
-	public boolean existe(String tipo) {
-	    for (TipoMaterial valor : TipoMaterial.values()){
-	        if (valor.name().equalsIgnoreCase(tipo))
-	            return true;
-	    }
-	    return false;
-	}
-}
-=======
 	public static TipoMaterial existe(String tipo) {
 	    for (TipoMaterial valor : TipoMaterial.values()){
 	        if (valor.name().equalsIgnoreCase(tipo))
@@ -59,4 +46,3 @@ public enum TipoMaterial {
 	}
 		
 }
->>>>>>> Rama-1
