@@ -4,7 +4,13 @@
 package com.floristeria.domain;
 
 /**
- * @author ru
+ * 
+ * Clase enum para el tipo de Material de la decoración. 
+ * Permitimos así que se pueda agregar más tipos sin 
+ * necesidad de tocar la clase de decoración.
+ * 
+ * @author Victoría Parra
+ * @author Rubén Rodríguez
  *
  */
 public enum TipoMaterial {
@@ -18,6 +24,12 @@ public enum TipoMaterial {
 	    }
 	    return null;
 	}
+	
+	/**
+	 * 
+	 * @return devuelve el listado actual de tipos de material.
+	 * 
+	 */
 	public static String [] listaTipos() {
 		String[] elementos = new String[2];
 		int i=0;
